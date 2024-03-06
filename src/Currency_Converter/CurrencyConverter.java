@@ -38,7 +38,7 @@ public class CurrencyConverter {
 	            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	            setResizable(false);
 
-	            // Set the icon
+	            
 	            ImageIcon icon = new ImageIcon(new ImageIcon("icon.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
 	            setIconImage(icon.getImage());
 
@@ -71,8 +71,8 @@ public class CurrencyConverter {
 	                String passwordInput = new String(passwordField.getPassword());
 
 	                if (usernameInput.equals(USERNAME) && passwordInput.equals(PASSWORD)) {
-	                    dispose(); // Close login window
-	                    new CurrencyConverterFrame(); // Open currency converter window
+	                    dispose(); 
+	                    new CurrencyConverterFrame(); 
 	                } else {
 	                    JOptionPane.showMessageDialog(LoginFrame.this, "Invalid username or password", "Error", JOptionPane.ERROR_MESSAGE);
 	                }
@@ -94,10 +94,10 @@ public class CurrencyConverter {
 	            JPanel panel = new JPanel(new GridLayout(6, 1, 10, 10));
 	            panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-	            // Currency selection
+	            
 	            JPanel currencyPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	            JLabel baseCurrencyLabel = new JLabel("Base Currency:");
-	            String[] currencies = {"USD", "EUR", "GBP", "JPY", "INR"}; // Added INR for Indian Rupees
+	            String[] currencies = {"USD", "EUR", "GBP", "JPY", "INR"};
 	            baseCurrencyComboBox = new JComboBox<>(currencies);
 	            JLabel targetCurrencyLabel = new JLabel("Target Currency:");
 	            targetCurrencyComboBox = new JComboBox<>(currencies);
@@ -107,7 +107,7 @@ public class CurrencyConverter {
 	            currencyPanel.add(targetCurrencyComboBox);
 	            panel.add(currencyPanel);
 
-	            // Amount input
+	            
 	            JPanel amountPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	            JLabel amountLabel = new JLabel("Amount:");
 	            amountField = new JTextField(10);
@@ -115,17 +115,17 @@ public class CurrencyConverter {
 	            amountPanel.add(amountField);
 	            panel.add(amountPanel);
 
-	            // Convert button
+	            
 	            JButton convertButton = new JButton("Convert");
 	            convertButton.addActionListener(new ConvertListener());
 	            panel.add(convertButton);
 
-	            // Result area
+	            
 	            resultArea = new JTextArea(5, 20);
 	            resultArea.setEditable(false);
 	            panel.add(new JScrollPane(resultArea));
 
-	            // Exit button
+	           
 	            JButton exitButton = new JButton("Exit");
 	            exitButton.addActionListener(e -> System.exit(0));
 	            panel.add(exitButton);
@@ -151,52 +151,50 @@ public class CurrencyConverter {
 	            }
 	        }
 
-	        // Method to simulate fetching exchange rates (replace with actual API call)
+	        
 	        private double getExchangeRate(String baseCurrency, String targetCurrency) {
-	            // In a real application, this method would fetch the exchange rate from an external API
-	            // For demonstration purposes, we'll use some arbitrary exchange rates
 	            if (baseCurrency.equals("USD") && targetCurrency.equals("EUR")) {
-	                return 0.85; // 1 USD = 0.85 EUR
+	                return 0.85; 
 	            } else if (baseCurrency.equals("USD") && targetCurrency.equals("GBP")) {
-	                return 0.72; // 1 USD = 0.72 GBP
+	                return 0.72; 
 	            } else if (baseCurrency.equals("USD") && targetCurrency.equals("JPY")) {
-	                return 105.50; // 1 USD = 105.50 JPY
+	                return 105.50; 
 	            } else if (baseCurrency.equals("USD") && targetCurrency.equals("INR")) {
-	                return 75.00; // 1 USD = 75.00 INR
+	                return 75.00; 
 	            } else if (baseCurrency.equals("EUR") && targetCurrency.equals("USD")) {
-	                return 1.18; // 1 EUR = 1.18 USD
+	                return 1.18; 
 	            } else if (baseCurrency.equals("EUR") && targetCurrency.equals("GBP")) {
-	                return 0.86; // 1 EUR = 0.86 GBP
+	                return 0.86; 
 	            } else if (baseCurrency.equals("EUR") && targetCurrency.equals("JPY")) {
-	                return 125.00; // 1 EUR = 125.00 JPY
+	                return 125.00; 
 	            } else if (baseCurrency.equals("EUR") && targetCurrency.equals("INR")) {
-	                return 88.50; // 1 EUR = 88.50 INR
+	                return 88.50; 
 	            } else if (baseCurrency.equals("GBP") && targetCurrency.equals("USD")) {
-	                return 1.39; // 1 GBP = 1.39 USD
+	                return 1.39; 
 	            } else if (baseCurrency.equals("GBP") && targetCurrency.equals("EUR")) {
-	                return 1.16; // 1 GBP = 1.16 EUR
+	                return 1.16; 
 	            } else if (baseCurrency.equals("GBP") && targetCurrency.equals("JPY")) {
-	                return 144.50; // 1 GBP = 144.50 JPY
+	                return 144.50; 
 	            } else if (baseCurrency.equals("GBP") && targetCurrency.equals("INR")) {
-	                return 99.25; // 1 GBP = 99.25 INR
+	                return 99.25; 
 	            } else if (baseCurrency.equals("JPY") && targetCurrency.equals("USD")) {
-	                return 0.0095; // 1 JPY = 0.0095 USD
+	                return 0.0095;
 	            } else if (baseCurrency.equals("JPY") && targetCurrency.equals("EUR")) {
-	                return 0.0080; // 1 JPY = 0.0080 EUR
+	                return 0.0080;
 	            } else if (baseCurrency.equals("JPY") && targetCurrency.equals("GBP")) {
-	                return 0.0069; // 1 JPY = 0.0069 GBP
+	                return 0.0069; 
 	            } else if (baseCurrency.equals("JPY") && targetCurrency.equals("INR")) {
-	                return 0.70; // 1 JPY = 0.70 INR
+	                return 0.70; 
 	            } else if (baseCurrency.equals("INR") && targetCurrency.equals("USD")) {
-	                return 0.013; // 1 INR = 0.013 USD
+	                return 0.013; 
 	            } else if (baseCurrency.equals("INR") && targetCurrency.equals("EUR")) {
-	                return 0.011; // 1 INR = 0.011 EUR
+	                return 0.011; 
 	            } else if (baseCurrency.equals("INR") && targetCurrency.equals("GBP")) {
-	                return 0.010; // 1 INR = 0.010 GBP
+	                return 0.010; 
 	            } else if (baseCurrency.equals("INR") && targetCurrency.equals("JPY")) {
-	                return 1.43; // 1 INR = 1.43 JPY
+	                return 1.43; 
 	            } else {
-	                return 1.0; // Default to 1:1 exchange rate if not found
+	                return 1.0; 
 	            }
 	        }
 	    }
